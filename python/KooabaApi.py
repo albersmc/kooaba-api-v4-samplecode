@@ -141,9 +141,6 @@ class BasicAPIClient:
             logger.info("< %d %s", response.status, response.reason)
             logger.info("< %s", body)
 
-            if (response.status < 200) or (response.status > 299):
-                raise RuntimeError("API call returned status %s %s. Message: %s" % (response.status, response.reason, body))
-
             return (response, body)
         finally:
             http.close()

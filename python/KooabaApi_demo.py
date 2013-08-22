@@ -1,16 +1,15 @@
-import traceback
 import logging
 
 from KASignature import KASignature
 from KooabaApi import BasicAPIClient
 
 # Configuration 
-BUCKET_ID = '<enter bucket id' 
-DATA_KEY_SECRET_TOKEN = 'enter data api token'
-QUERY_KEY_SECRET_TOKEN = 'enter query api token' 
+BUCKET_ID = '<enter bucket id>'
+DATA_KEY_SECRET_TOKEN = '<enter data api token>'
+QUERY_KEY_SECRET_TOKEN = '<enter query api token>' 
 
 ## only needed for KA authentication
-QUERY_KEY_ID = 'enter query api key id' 
+QUERY_KEY_ID = '<enter query api key id>' 
 
 # Use the INFO logging level and log all output to stdout (default)
 logging.basicConfig(level=logging.INFO, format='%(name)s:%(levelname)s: %(message)s')
@@ -36,6 +35,7 @@ def query_example():
         result = client.query('../images/query_image.jpg', 'KA')
     except:
         logger.exception('Query failed')
+        raise
 
 
 def upload_example():
@@ -52,6 +52,7 @@ def upload_example():
        logger.info('attached image %s', images[0]['sha1'])
     except:
        logger.exception('Upload failed')
+       raise
 
 
 if __name__ == '__main__':
